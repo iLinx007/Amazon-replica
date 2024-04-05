@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<head>
+    <title>
+        Cart Quantity
+    </title>
+    <style>
+        .plus{
+            background-color: red;
+        }
+        .plus2{
+            background-color: yellow;
+        }
+        .plus3{
+            background-color: green;
+        }
+        .decrease{
+            background-color: violet;
+        }
+        .reset{
+            background-color: orange;
+        }
+    </style>
+</head>
+<body>
+    <p>Cart Quantity</p>
+    
+    <button onclick="
+    alert(`Cart quantity: ${cartQnty}`)
+    ">
+        Show Quantity
+    </button>
+
+    <button class="plus" onclick="
+        if (cartQnty >= 20){
+            alert(`Cart is full \nMax quantity: 20`);
+        }
+        else{
+        cartQnty += 1;
+        console.log(`Cart quantity: ${cartQnty}`)
+        }
+        ">
+        Add to cart
+    </button>
+
+    <button class="plus2" onclick="
+        if (cartQnty > 18 && cartQnty <= 20){
+            cartQnty = 20;
+            console.log(`Cart quantity: ${cartQnty}`);
+            alert(`Cart is full \nMax quantity: 20`);
+        }
+        else if (cartQnty >= 20){
+            alert(`Cart is full \nMax quantity: 20`);
+        }
+        else{
+        cartQnty += 2;
+        console.log(`Cart quantity: ${cartQnty}`)
+        }
+        ">
+        Increase by 2
+    </button>
+
+    <button class="plus3" onclick="
+
+        if (cartQnty >= 20){
+            alert(`Cart is full \nMax quantity: 20`);
+        }
+        else if (cartQnty >= 18 && cartQnty <= 20){
+            cartQnty = 20;
+            console.log(`Cart quantity: ${cartQnty}`);
+            alert('Cart is full');
+        }
+        else{
+            cartQnty += 3;
+            console.log(`Cart quantity: ${cartQnty}`);
+        }
+        ">
+        Increase by 3
+    </button>
+
+    <button class="decrease" onclick="
+        if (cartQnty <= 0){
+            alert('Cart is empty');
+        }
+        else{
+        cartQnty -= 1;
+        console.log(`Cart quantity: ${cartQnty}`);
+        }
+        
+        ">
+        Remove from cart
+    </button>
+
+    <button class="reset" onclick="
+        cartQnty = 0;
+        console.log(`Cart was reset`)
+        console.log(`Cart quantity: ${cartQnty}`)
+        ">
+        Reset cart
+    </button>
+
+    <script>
+        let cartQnty = 0;
+        console.log(`Cart quantity: ${cartQnty}`)
+    </script>
+</body>
