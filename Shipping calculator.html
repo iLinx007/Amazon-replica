@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Shipping Calculator
+        </title>
+    </head>
+
+    <body>
+        <p>Amazon Shipping Calculator</p>
+        <p></p>
+        <p></p>
+        <input placeholder="Total cost of order" class="js-costCalculator"
+        onkeydown="
+        handleCostKeyDown(event);
+        ">
+        <button onclick="
+        calculateTotal();
+        ">
+            Calculate
+        </button>
+        <p class="js-shippingCost">
+            Shipping cost: $0
+        </p>
+        <p class="js-totalCost">
+            Your total cost is: $0.
+        </p>
+
+
+        <script>
+            function handleCostKeyDown(event){
+                if (event.key === 'Enter'){
+                    calculateTotal();
+                }
+            }
+
+            function calculateTotal(){
+                let inputElement = document.querySelector('.js-costCalculator');
+                let cost = Number(inputElement.value);
+                let shippingCost = 0;
+
+                if (cost < 1 || !cost){
+                    alert('Please enter a valid number.');
+                    cost = 0;
+                }
+                else if (cost <= 40){
+                    cost += 20;
+                    shippingCost = 20;
+                }
+                else if (cost > 40 && (cost <= 100)){
+                    cost += 10
+                    shippingCost = 10;
+                }
+                else{
+                    cost = cost;
+                    shippingCost = 0;
+                }
+
+                if (!cost){
+                    alert('Please enter a valid number.')
+                }
+                else{
+                    document.querySelector('.js-shippingCost').innerHTML = `Shipping cost: $${shippingCost}`;
+                    document.querySelector('.js-totalCost').innerHTML = `Your total cost is: $${cost}`;
+
+                }
+                
+            }
+        </script>
+    </body>
+</html>
