@@ -25,81 +25,117 @@
     <p>Cart Quantity</p>
     
     <button onclick="
-    alert(`Cart quantity: ${cartQnty}`)
+        showQnty();    
     ">
         Show Quantity
     </button>
 
     <button class="plus" onclick="
-        if (cartQnty >= 20){
-            alert(`Cart is full \nMax quantity: 20`);
-        }
-        else{
-        cartQnty += 1;
-        console.log(`Cart quantity: ${cartQnty}`)
-        }
+        addToCart();        
         ">
         Add to cart
     </button>
 
     <button class="plus2" onclick="
-        if (cartQnty > 18 && cartQnty <= 20){
-            cartQnty = 20;
-            console.log(`Cart quantity: ${cartQnty}`);
-            alert(`Cart is full \nMax quantity: 20`);
-        }
-        else if (cartQnty >= 20){
-            alert(`Cart is full \nMax quantity: 20`);
-        }
-        else{
-        cartQnty += 2;
-        console.log(`Cart quantity: ${cartQnty}`)
-        }
+        increaseBy2();
         ">
         Increase by 2
     </button>
 
     <button class="plus3" onclick="
-
-        if (cartQnty >= 20){
-            alert(`Cart is full \nMax quantity: 20`);
-        }
-        else if (cartQnty >= 18 && cartQnty <= 20){
-            cartQnty = 20;
-            console.log(`Cart quantity: ${cartQnty}`);
-            alert('Cart is full');
-        }
-        else{
-            cartQnty += 3;
-            console.log(`Cart quantity: ${cartQnty}`);
-        }
+        increaseBy3();
         ">
         Increase by 3
     </button>
 
     <button class="decrease" onclick="
-        if (cartQnty <= 0){
-            alert('Cart is empty');
-        }
-        else{
-        cartQnty -= 1;
-        console.log(`Cart quantity: ${cartQnty}`);
-        }
-        
+        decreaseQnty();
         ">
         Remove from cart
     </button>
 
     <button class="reset" onclick="
-        cartQnty = 0;
-        console.log(`Cart was reset`)
-        console.log(`Cart quantity: ${cartQnty}`)
+        resetQnty();
         ">
         Reset cart
     </button>
 
+    <p class="js-cartQnty">
+        Cart Quantity: 0
+    </p>
+
     <script>
         let cartQnty = 0;
-        console.log(`Cart quantity: ${cartQnty}`)
+
+        function updateCartQnty(){
+            document.querySelector('.js-cartQnty').innerHTML = `Cart Quantity: ${cartQnty}`;
+        }
+
+        function showQnty(){
+            alert(`Cart quantity: ${cartQnty}`);
+        }
+
+        function addToCart(){
+            if (cartQnty >= 20){
+                updateCartQnty();
+                alert(`Cart is full \nMax quantity: 20`);
+            }
+            else{
+                cartQnty += 1;
+                updateCartQnty();
+            }
+        }
+
+        function increaseBy2(){
+            if (cartQnty > 18 && cartQnty <= 20){
+                cartQnty = 20;
+                updateCartQnty();
+                alert(`Cart is full \nMax quantity: 20`);
+            }
+            else if (cartQnty >= 20){
+                updateCartQnty();
+                alert(`Cart is full \nMax quantity: 20`);
+            }
+            else{
+                cartQnty += 2;
+                updateCartQnty();
+            }
+        }
+        
+        function increaseBy3(){
+            if (cartQnty >= 20){
+                updateCartQnty();
+                alert(`Cart is full \nMax quantity: 20`);
+            }
+            else if (cartQnty >= 18 && cartQnty <= 20){
+                cartQnty = 20;
+                updateCartQnty();
+                alert('Cart is full');
+            }
+            else{
+                cartQnty += 3;
+                updateCartQnty();
+            }
+        }
+
+        function decreaseQnty(){
+            if (cartQnty <= 0){
+                alert('Cart is empty');
+                updateCartQnty();
+            }
+            else{
+                cartQnty -= 1;
+                updateCartQnty();
+            }
+        }
+
+        function resetQnty(){
+            cartQnty = 0;
+            alert(`Cart was reset.
+Cart quantity: ${cartQnty}`);
+            updateCartQnty();
+        }
+        
+
     </script>
 </body>
