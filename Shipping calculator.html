@@ -19,6 +19,14 @@
         ">
             Calculate
         </button>
+
+        <button onclick="
+        clearAll();
+        ">
+            Clear
+        </button>
+
+
         <p class="js-shippingCost">
             Shipping cost: $0
         </p>
@@ -32,6 +40,14 @@
                 if (event.key === 'Enter'){
                     calculateTotal();
                 }
+            }
+
+            function clearAll(){
+                let inputElement = document.querySelector('.js-costCalculator');
+                inputElement.value = '';
+                document.querySelector('.js-shippingCost').innerHTML = `Shipping cost: $0`;
+                document.querySelector('.js-totalCost').innerHTML = `Your total cost is: $0`;
+                
             }
 
             function calculateTotal(){
